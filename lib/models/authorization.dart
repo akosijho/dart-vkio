@@ -91,7 +91,8 @@ class Authorization {
   }
 
   Future<Map> _request(String paramsString) async {
-    var response = await http.get('https://oauth.vk.com/token?$paramsString');
+    var response =
+        await http.get(Uri.parse('https://oauth.vk.com/token?$paramsString'));
     Map json = jsonDecode(response.body);
 
     if (json['error'] == null) {

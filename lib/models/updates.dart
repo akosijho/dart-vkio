@@ -224,7 +224,7 @@ class Updates {
 
   Future<void> fetchUpdates() async {
     var response = await http.get(
-      _url,
+      Uri.parse(_url),
       headers: {
         'connection': 'keep-alive',
       },

@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:math';
+
 import 'package:http/http.dart' as http;
 
 import '../vk.dart';
-
 import 'account.dart';
 import 'ads.dart';
+import 'apiexception.dart';
 import 'apps.dart';
 import 'auth.dart';
 import 'board.dart';
@@ -40,8 +41,6 @@ import 'utils.dart';
 import 'video.dart';
 import 'wall.dart';
 import 'widgets.dart';
-
-import 'apiexception.dart';
 
 /// VK API class
 class API {
@@ -235,7 +234,7 @@ class API {
     };
 
     var response = await http.post(
-      _baseUrl + '/$method',
+      Uri.tryParse(_baseUrl + '/$method'),
       body: body,
     );
 
