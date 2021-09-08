@@ -3,7 +3,7 @@ import 'api.dart';
 /// Wall class
 class Wall {
   /// API class
-  API _api;
+  late API _api;
 
   /// Wall
   Wall(API api) {
@@ -20,7 +20,7 @@ class Wall {
   /// `owner_id` *(integer)*
   ///
   /// `post_id` *(integer)*
-  Future<dynamic> closeComments([Map<String, dynamic> params]) async {
+  Future<dynamic> closeComments([Map<String, dynamic>? params]) async {
     return _api.request('wall.closeComments', {
       ...?params,
     });
@@ -45,7 +45,7 @@ class Wall {
   /// `sticker_id` *(integer)* Sticker ID.
   ///
   /// `guid` *(string)* Unique identifier to avoid repeated comments.
-  Future<dynamic> createComment([Map<String, dynamic> params]) async {
+  Future<dynamic> createComment([Map<String, dynamic>? params]) async {
     return _api.request('wall.createComment', {
       ...?params,
     });
@@ -58,7 +58,7 @@ class Wall {
   /// `owner_id` *(integer)* User ID or community ID. Use a negative value to designate a community ID.
   ///
   /// `post_id` *(integer)* ID of the post to be deleted.
-  Future<dynamic> delete([Map<String, dynamic> params]) async {
+  Future<dynamic> delete([Map<String, dynamic>? params]) async {
     return _api.request('wall.delete', {
       ...?params,
     });
@@ -71,7 +71,7 @@ class Wall {
   /// `owner_id` *(integer)* User ID or community ID. Use a negative value to designate a community ID.
   ///
   /// `comment_id` *(integer)* Comment ID.
-  Future<dynamic> deleteComment([Map<String, dynamic> params]) async {
+  Future<dynamic> deleteComment([Map<String, dynamic>? params]) async {
     return _api.request('wall.deleteComment', {
       ...?params,
     });
@@ -112,7 +112,7 @@ class Wall {
   /// `poster_bkg_owner_id` *(integer)*
   ///
   /// `poster_bkg_access_hash` *(string)*
-  Future<dynamic> edit([Map<String, dynamic> params]) async {
+  Future<dynamic> edit([Map<String, dynamic>? params]) async {
     return _api.request('wall.edit', {
       ...?params,
     });
@@ -145,7 +145,7 @@ class Wall {
   /// `link_image` *(string)* Link image url
   ///
   /// `link_video` *(string)* Link video ID in format "<owner_id>_<media_id>"
-  Future<dynamic> editAdsStealth([Map<String, dynamic> params]) async {
+  Future<dynamic> editAdsStealth([Map<String, dynamic>? params]) async {
     return _api.request('wall.editAdsStealth', {
       ...?params,
     });
@@ -162,7 +162,7 @@ class Wall {
   /// `message` *(string)* New comment text.
   ///
   /// `attachments` *(array)* List of objects attached to the comment, in the following format: , "<owner_id>_<media_id>,<owner_id>_<media_id>", '' — Type of media attachment: 'photo' — photo, 'video' — video, 'audio' — audio, 'doc' — document, '<owner_id>' — ID of the media attachment owner. '<media_id>' — Media attachment ID. For example: "photo100172_166443618,photo66748_265827614"
-  Future<dynamic> editComment([Map<String, dynamic> params]) async {
+  Future<dynamic> editComment([Map<String, dynamic>? params]) async {
     return _api.request('wall.editComment', {
       ...?params,
     });
@@ -185,7 +185,7 @@ class Wall {
   /// `extended` *(boolean)* '1' — to return 'wall', 'profiles', and 'groups' fields, '0' — to return no additional fields (default)
   ///
   /// `fields` *(array)*
-  Future<dynamic> get([Map<String, dynamic> params]) async {
+  Future<dynamic> get([Map<String, dynamic>? params]) async {
     return _api.request('wall.get', {
       ...?params,
     });
@@ -202,7 +202,7 @@ class Wall {
   /// `copy_history_depth` *(integer)* Sets the number of parent elements to include in the array 'copy_history' that is returned if the post is a repost from another wall., default: 2
   ///
   /// `fields` *(array)*
-  Future<dynamic> getById([Map<String, dynamic> params]) async {
+  Future<dynamic> getById([Map<String, dynamic>? params]) async {
     return _api.request('wall.getById', {
       ...?params,
     });
@@ -235,7 +235,7 @@ class Wall {
   /// `comment_id` *(integer)* Comment ID.
   ///
   /// `thread_items_count` *(integer)* Count items in threads., max: 10
-  Future<dynamic> getComments([Map<String, dynamic> params]) async {
+  Future<dynamic> getComments([Map<String, dynamic>? params]) async {
     return _api.request('wall.getComments', {
       ...?params,
     });
@@ -252,7 +252,7 @@ class Wall {
   /// `offset` *(integer)* Offset needed to return a specific subset of reposts.
   ///
   /// `count` *(integer)* Number of reposts to return., default: 20, max: 1000
-  Future<dynamic> getReposts([Map<String, dynamic> params]) async {
+  Future<dynamic> getReposts([Map<String, dynamic>? params]) async {
     return _api.request('wall.getReposts', {
       ...?params,
     });
@@ -263,7 +263,7 @@ class Wall {
   /// `owner_id` *(integer)*
   ///
   /// `post_id` *(integer)*
-  Future<dynamic> openComments([Map<String, dynamic> params]) async {
+  Future<dynamic> openComments([Map<String, dynamic>? params]) async {
     return _api.request('wall.openComments', {
       ...?params,
     });
@@ -276,7 +276,7 @@ class Wall {
   /// `owner_id` *(integer)* ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
   ///
   /// `post_id` *(integer)* Post ID.
-  Future<dynamic> pin([Map<String, dynamic> params]) async {
+  Future<dynamic> pin([Map<String, dynamic>? params]) async {
     return _api.request('wall.pin', {
       ...?params,
     });
@@ -317,7 +317,7 @@ class Wall {
   /// `close_comments` *(boolean)*
   ///
   /// `mute_notifications` *(boolean)*
-  Future<dynamic> post([Map<String, dynamic> params]) async {
+  Future<dynamic> post([Map<String, dynamic>? params]) async {
     return _api.request('wall.post', {
       ...?params,
     });
@@ -350,7 +350,7 @@ class Wall {
   /// `link_image` *(string)* Link image url
   ///
   /// `link_video` *(string)* Link video ID in format "<owner_id>_<media_id>"
-  Future<dynamic> postAdsStealth([Map<String, dynamic> params]) async {
+  Future<dynamic> postAdsStealth([Map<String, dynamic>? params]) async {
     return _api.request('wall.postAdsStealth', {
       ...?params,
     });
@@ -365,7 +365,7 @@ class Wall {
   /// `comment_id` *(integer)* Comment ID.
   ///
   /// `reason` *(integer)* Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-  Future<dynamic> reportComment([Map<String, dynamic> params]) async {
+  Future<dynamic> reportComment([Map<String, dynamic>? params]) async {
     return _api.request('wall.reportComment', {
       ...?params,
     });
@@ -380,7 +380,7 @@ class Wall {
   /// `post_id` *(integer)* Post ID.
   ///
   /// `reason` *(integer)* Reason for the complaint: '0' – spam, '1' – child pornography, '2' – extremism, '3' – violence, '4' – drug propaganda, '5' – adult material, '6' – insult, abuse
-  Future<dynamic> reportPost([Map<String, dynamic> params]) async {
+  Future<dynamic> reportPost([Map<String, dynamic>? params]) async {
     return _api.request('wall.reportPost', {
       ...?params,
     });
@@ -399,7 +399,7 @@ class Wall {
   /// `mark_as_ads` *(boolean)*
   ///
   /// `mute_notifications` *(boolean)*
-  Future<dynamic> repost([Map<String, dynamic> params]) async {
+  Future<dynamic> repost([Map<String, dynamic>? params]) async {
     return _api.request('wall.repost', {
       ...?params,
     });
@@ -412,7 +412,7 @@ class Wall {
   /// `owner_id` *(integer)* User ID or community ID from whose wall the post was deleted. Use a negative value to designate a community ID.
   ///
   /// `post_id` *(integer)* ID of the post to be restored.
-  Future<dynamic> restore([Map<String, dynamic> params]) async {
+  Future<dynamic> restore([Map<String, dynamic>? params]) async {
     return _api.request('wall.restore', {
       ...?params,
     });
@@ -425,7 +425,7 @@ class Wall {
   /// `owner_id` *(integer)* User ID or community ID. Use a negative value to designate a community ID.
   ///
   /// `comment_id` *(integer)* Comment ID.
-  Future<dynamic> restoreComment([Map<String, dynamic> params]) async {
+  Future<dynamic> restoreComment([Map<String, dynamic>? params]) async {
     return _api.request('wall.restoreComment', {
       ...?params,
     });
@@ -450,7 +450,7 @@ class Wall {
   /// `extended` *(boolean)* show extended post info.
   ///
   /// `fields` *(array)*
-  Future<dynamic> search([Map<String, dynamic> params]) async {
+  Future<dynamic> search([Map<String, dynamic>? params]) async {
     return _api.request('wall.search', {
       ...?params,
     });
@@ -463,7 +463,7 @@ class Wall {
   /// `owner_id` *(integer)* ID of the user or community that owns the wall. By default, current user ID. Use a negative value to designate a community ID.
   ///
   /// `post_id` *(integer)* Post ID.
-  Future<dynamic> unpin([Map<String, dynamic> params]) async {
+  Future<dynamic> unpin([Map<String, dynamic>? params]) async {
     return _api.request('wall.unpin', {
       ...?params,
     });

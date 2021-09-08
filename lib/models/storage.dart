@@ -3,7 +3,7 @@ import 'api.dart';
 /// Storage class
 class Storage {
   /// API class
-  API _api;
+  late API _api;
 
   /// Storage
   Storage(API api) {
@@ -26,7 +26,7 @@ class Storage {
   /// `user_id` *(integer)*
   ///
   /// `global` *(boolean)*
-  Future<dynamic> get([Map<String, dynamic> params]) async {
+  Future<dynamic> get([Map<String, dynamic>? params]) async {
     return _api.request('storage.get', {
       ...?params,
     });
@@ -43,7 +43,7 @@ class Storage {
   /// `offset` *(integer)*
   ///
   /// `count` *(integer)* amount of variable names the info needs to be collected from., default: 100, max: 1000
-  Future<dynamic> getKeys([Map<String, dynamic> params]) async {
+  Future<dynamic> getKeys([Map<String, dynamic>? params]) async {
     return _api.request('storage.getKeys', {
       ...?params,
     });
@@ -60,7 +60,7 @@ class Storage {
   /// `user_id` *(integer)*
   ///
   /// `global` *(boolean)*
-  Future<dynamic> set([Map<String, dynamic> params]) async {
+  Future<dynamic> set([Map<String, dynamic>? params]) async {
     return _api.request('storage.set', {
       ...?params,
     });

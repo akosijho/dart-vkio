@@ -3,8 +3,8 @@ import 'package:vkio/main.dart';
 import 'context.dart';
 
 class MessageAllowContext extends Context {
-  Map<String, dynamic> _message;
-  VK _vk;
+  late Map<String, dynamic> _message;
+  late VK _vk;
 
   MessageAllowContext(VK vk, Map<String, dynamic> update)
       : super(update['type']) {
@@ -54,7 +54,7 @@ class MessageAllowContext extends Context {
   /// `dont_parse_links` *(boolean)*
   ///
   /// `disable_mentions` *(boolean)*
-  Future<dynamic> send(String text, [Map<String, dynamic> params]) {
+  Future<dynamic> send(String text, [Map<String, dynamic>? params]) {
     return _vk.api.messages.send({
       'user_id': userId,
       'message': text,

@@ -3,7 +3,7 @@ import 'api.dart';
 /// Polls class
 class Polls {
   /// API class
-  API _api;
+  late API _api;
 
   /// Polls
   Polls(API api) {
@@ -26,7 +26,7 @@ class Polls {
   /// `answer_ids` *(array)*
   ///
   /// `is_board` *(boolean)*
-  Future<dynamic> addVote([Map<String, dynamic> params]) async {
+  Future<dynamic> addVote([Map<String, dynamic>? params]) async {
     return _api.request('polls.addVote', {
       ...?params,
     });
@@ -51,7 +51,7 @@ class Polls {
   /// `photo_id` *(integer)*
   ///
   /// `background_id` *(string)*
-  Future<dynamic> create([Map<String, dynamic> params]) async {
+  Future<dynamic> create([Map<String, dynamic>? params]) async {
     return _api.request('polls.create', {
       ...?params,
     });
@@ -68,7 +68,7 @@ class Polls {
   /// `answer_id` *(integer)* Answer ID.
   ///
   /// `is_board` *(boolean)*
-  Future<dynamic> deleteVote([Map<String, dynamic> params]) async {
+  Future<dynamic> deleteVote([Map<String, dynamic>? params]) async {
     return _api.request('polls.deleteVote', {
       ...?params,
     });
@@ -95,7 +95,7 @@ class Polls {
   /// `photo_id` *(integer)*
   ///
   /// `background_id` *(string)*
-  Future<dynamic> edit([Map<String, dynamic> params]) async {
+  Future<dynamic> edit([Map<String, dynamic>? params]) async {
     return _api.request('polls.edit', {
       ...?params,
     });
@@ -118,7 +118,7 @@ class Polls {
   /// `fields` *(array)*
   ///
   /// `name_case` *(string)*, default: nom
-  Future<dynamic> getById([Map<String, dynamic> params]) async {
+  Future<dynamic> getById([Map<String, dynamic>? params]) async {
     return _api.request('polls.getById', {
       ...?params,
     });
@@ -145,7 +145,7 @@ class Polls {
   /// `fields` *(array)* Profile fields to return. Sample values: 'nickname', 'screen_name', 'sex', 'bdate (birthdate)', 'city', 'country', 'timezone', 'photo', 'photo_medium', 'photo_big', 'has_mobile', 'rate', 'contacts', 'education', 'online', 'counters'.
   ///
   /// `name_case` *(string)* Case for declension of user name and surname: , 'nom' — nominative (default) , 'gen' — genitive , 'dat' — dative , 'acc' — accusative , 'ins' — instrumental , 'abl' — prepositional
-  Future<dynamic> getVoters([Map<String, dynamic> params]) async {
+  Future<dynamic> getVoters([Map<String, dynamic>? params]) async {
     return _api.request('polls.getVoters', {
       ...?params,
     });

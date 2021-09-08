@@ -48,10 +48,10 @@ class Authorization {
   }
 
   Map<String, dynamic> _getParams({
-    Map<String, dynamic> client,
-    String username,
-    String password,
-    int code,
+    required Map<String, dynamic> client,
+    required String username,
+    required String password,
+    int? code,
   }) {
     var params = {
       'grant_type': 'password',
@@ -71,12 +71,12 @@ class Authorization {
   }
 
   Future<Map> _doSetting({
-    ClientType clientName,
-    String username,
-    String password,
-    int code,
+    required ClientType clientName,
+    required String username,
+    required String password,
+    int? code,
   }) {
-    var client = _clients[clientName];
+    var client = _clients[clientName]!;
 
     final params = _getParams(
       client: client,
@@ -112,9 +112,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> android({
-    String username,
-    String password,
-    int code,
+    required String username,
+    required String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.ANDROID,
@@ -134,9 +134,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> iphone({
-    String username,
-    String password,
-    int code,
+    required  String username,
+    required  String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.IPHONE,
@@ -156,9 +156,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> ipad({
-    String username,
-    String password,
-    int code,
+    required   String username,
+    required   String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.IPAD,
@@ -178,9 +178,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> windowsPhone({
-    String username,
-    String password,
-    int code,
+    required  String username,
+    required  String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.WINDOWS_PHONE,
@@ -200,9 +200,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> vkMe({
-    String username,
-    String password,
-    int code,
+    required   String username,
+    required  String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.VK_ME,
@@ -222,9 +222,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> kate({
-    String username,
-    String password,
-    int code,
+    required   String username,
+    required  String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.KATE,
@@ -244,9 +244,9 @@ class Authorization {
   ///
   /// `code` *(integer)* 2FA code.
   Future<dynamic> windows({
-    String username,
-    String password,
-    int code,
+    required String username,
+    required String password,
+    int? code,
   }) {
     return _doSetting(
       clientName: ClientType.WINDOWS,

@@ -3,7 +3,7 @@ import 'api.dart';
 /// Search class
 class Search {
   /// API class
-  API _api;
+  late API _api;
 
   /// Search
   Search(API api) {
@@ -30,7 +30,7 @@ class Search {
   /// `fields` *(array)*
   ///
   /// `search_global` *(boolean)*, default: 1
-  Future<dynamic> getHints([Map<String, dynamic> params]) async {
+  Future<dynamic> getHints([Map<String, dynamic>? params]) async {
     return _api.request('search.getHints', {
       ...?params,
     });

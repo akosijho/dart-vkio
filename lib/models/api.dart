@@ -48,112 +48,112 @@ class API {
   final String _baseUrl = 'https://api.vk.com/method';
 
   /// VK class
-  VK _vk;
+  late VK _vk;
 
   /// Account class
-  Account account;
+  late Account account;
 
   /// Ads class
-  Ads ads;
+  late Ads ads;
 
   /// Apps class
-  Apps apps;
+  late Apps apps;
 
   /// Auth class
-  Auth auth;
+  late Auth auth;
 
   /// Board class
-  Board board;
+  late Board board;
 
   /// Database class
-  Database database;
+  late Database database;
 
   /// Docs class
-  Docs docs;
+  late Docs docs;
 
   /// Fave class
-  Fave fave;
+  late Fave fave;
 
   /// Friends class
-  Friends friends;
+  late Friends friends;
 
   /// Gifts class
-  Gifts gifts;
+  late Gifts gifts;
 
   /// Groups class
-  Groups groups;
+  late Groups groups;
 
   /// Leads class
-  Leads leads;
+  late Leads leads;
 
   /// Likes class
-  Likes likes;
+  late Likes likes;
 
   /// Market class
-  Market market;
+  late Market market;
 
   /// Messages class
-  Messages messages;
+  late Messages messages;
 
   /// Newsfeed class
-  Newsfeed newsfeed;
+  late Newsfeed newsfeed;
 
   /// Notes class
-  Notes notes;
+  late Notes notes;
 
   /// Notifications class
-  Notifications notifications;
+  late Notifications notifications;
 
   /// Orders class
-  Orders orders;
+  late Orders orders;
 
   /// Pages class
-  Pages pages;
+  late Pages pages;
 
   /// Photos class
-  Photos photos;
+  late Photos photos;
 
   /// Polls class
-  Polls polls;
+  late Polls polls;
 
   /// PrettyCards class
-  PrettyCards prettyCards;
+  late PrettyCards prettyCards;
 
   /// Search class
-  Search search;
+  late Search search;
 
   /// Secure class
-  Secure secure;
+  late Secure secure;
 
   /// Stats class
-  Stats stats;
+  late Stats stats;
 
   /// Status class
-  Status status;
+  late Status status;
 
   /// Storage class
-  Storage storage;
+  late Storage storage;
 
   /// Stories class
-  Stories stories;
+  late Stories stories;
 
   /// Streaming class
-  Streaming streaming;
+  late Streaming streaming;
 
   /// Users class
-  Users users;
+  late Users users;
 
   /// Utils class
-  Utils utils;
+  late Utils utils;
 
   /// Video class
-  Video video;
+  late Video video;
 
   /// Wall class
-  Wall wall;
+  late Wall wall;
 
   /// Widgets class
-  Widgets widgets;
+  late Widgets widgets;
 
   /// API
   API(VK vk) {
@@ -202,7 +202,7 @@ class API {
   }
 
   Future<dynamic> request(String method,
-      [Map<String, dynamic> rawParams]) async {
+      [Map<String, dynamic>? rawParams]) async {
     var params = {...?rawParams};
 
     for (var item in params.entries) {
@@ -234,7 +234,7 @@ class API {
     };
 
     var response = await http.post(
-      Uri.tryParse(_baseUrl + '/$method'),
+      Uri.tryParse(_baseUrl + '/$method')!,
       body: body,
     );
 
@@ -253,7 +253,7 @@ class API {
   }
 
   /// Call an API [method] with [params]
-  Future<dynamic> call(String method, [Map<String, dynamic> params]) async {
+  Future<dynamic> call(String method, [Map<String, dynamic>? params]) async {
     return request(method, {
       ...?params,
     });

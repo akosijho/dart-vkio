@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../vk.dart';
 import '../contexts/main.dart';
 import '../handlers.dart';
+import '../vk.dart';
 
 class ResponseMode {
   static const int ATTACHMENT = 2;
@@ -26,12 +26,12 @@ const int DEFAULT_MODE = ResponseMode.ATTACHMENT |
 RegExp ATTACHMENT_ID_RE = RegExp(r'attach(?<id>\d+)(?:_(?<type>type)|$)');
 
 class Updates {
-  final VK _vk;
+  late final VK _vk;
   bool isStarted = false;
-  String _url;
+  late String _url;
   String _ts = '0';
   int _restarted = 0;
-  String _lastEventId;
+  String? _lastEventId;
   int _lastMessageId = 0;
 
   OnNewMessageHandler onNewMessage = (context) async {};
@@ -200,7 +200,7 @@ class Updates {
           _restarted < pollingAttempts) {
         _restarted += 1;
 
-        await sleep(Duration(seconds: 3));
+        sleep(Duration(seconds: 3));
 
         startFetchLoop();
 
@@ -216,7 +216,7 @@ class Updates {
         } catch (e) {
           isStarted = true;
 
-          await sleep(pollingWait);
+          sleep(pollingWait);
         }
       }
     }

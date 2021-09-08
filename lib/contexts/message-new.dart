@@ -1,13 +1,14 @@
 import 'dart:convert';
+
 // import 'package:dio/dio.dart';
 
 import '../vk.dart';
 import 'context.dart';
 
 class MessageContext extends Context {
-  Map<String, dynamic> _message;
-  Map<String, dynamic> payload;
-  VK _vk;
+  late Map<String, dynamic> _message;
+  late Map<String, dynamic> payload;
+  late VK _vk;
 
   MessageContext(VK vk, Map<String, dynamic> update) : super(update['type']) {
     payload = update['object'];
@@ -16,41 +17,69 @@ class MessageContext extends Context {
   }
 
   int get id => _message['id'];
+
   int get conversationMessageId => _message['conversation_message_id'];
+
   int get senderId => _message['from_id'];
+
   int get createdAt => _message['date'];
+
   int get peerId => _message['peer_id'];
+
   int get randomId => _message['random_id'];
+
   int get eventMemberId => _message['action']['member_id'];
-  double get chatId => isChat ? peerId - 2e9 : null;
+
+  double? get chatId => isChat ? peerId - 2e9 : null;
 
   bool get isOutbox => _message['out'] == 1;
+
   bool get isInbox => !isOutbox;
+
   bool get isDM => chatId == peerId;
+
   bool get isUser => senderId > 0;
+
   bool get isGroup => !isUser;
+
   bool get isFromUser => isUser && isDM;
+
   bool get isFromGroup => isGroup && isDM;
+
   bool get isChat => peerId > 2e9;
+
   bool get hasText => text != null;
+
   bool get hasReplyMessage => replyMessage != null;
+
   bool get isImportant => _message['important'] == 1;
+
   bool get isHidden => _message['is_hidden'];
+
   bool get hasForwards => forwards.isNotEmpty;
+
   bool get hasMessagePayload => _message['payload'] != null;
+
   bool hasAttachments() => attachments.isNotEmpty;
 
-  String get text => _message['text'];
+  String? get text => _message['text'];
+
   String get referralValue => _message['ref'];
+
   String get referralSource => _message['ref_source'];
+
   String get eventType => _message['action']['type'];
+
   String get eventText => _message['action']['text'];
+
   String get eventEmail => _message['action']['email'];
 
   Map<String, dynamic> get clientInfo => payload['client_info'];
-  Map<String, dynamic> get replyMessage => _message['reply_message'];
-  Map<String, dynamic> get messagePayload {
-    Map<String, dynamic> payload = _message['payload'];
+
+  Map<String, dynamic>? get replyMessage => _message['reply_message'];
+
+  Map<String, dynamic>? get messagePayload {
+    Map<String, dynamic>? payload = _message['payload'];
 
     if (payload == null) return null;
 
@@ -58,6 +87,7 @@ class MessageContext extends Context {
   }
 
   List<Map<String, dynamic>> get forwards => _message['fwd_messages'];
+
   List<dynamic> get attachments => _message['attachments'];
 
   /// Sends a message to the current dialog
@@ -99,7 +129,7 @@ class MessageContext extends Context {
   /// `dont_parse_links` *(boolean)*
   ///
   /// `disable_mentions` *(boolean)*
-  Future<dynamic> send(String text, [Map<String, dynamic> params]) {
+  Future<dynamic> send(String text, [Map<String, dynamic>? params]) {
     return _vk.api.messages.send({
       'peer_id': peerId,
       'message': text,
@@ -131,7 +161,7 @@ class MessageContext extends Context {
   ///
   /// `dont_parse_links` *(boolean)*
   Future<dynamic> editMessageText(String message,
-      [Map<String, dynamic> params]) {
+      [Map<String, dynamic>? params]) {
     return _vk.api.messages.edit({
       'peer_id': peerId,
       'message': message,
@@ -164,7 +194,7 @@ class MessageContext extends Context {
   /// `group_id` *(integer)* Group ID (for group messages with user access token)
   ///
   /// `dont_parse_links` *(boolean)*
-  Future<dynamic> reply(String message, [Map<String, dynamic> params]) {
+  Future<dynamic> reply(String message, [Map<String, dynamic>? params]) {
     return send('', {
       'reply_to': id,
       'message': message,
@@ -302,7 +332,7 @@ class MessageContext extends Context {
   /// Invites a new user
   ///
   /// `id` *(integer)* User ID.
-  Future<dynamic> inviteUser([int id]) {
+  Future<dynamic> inviteUser([int? id]) {
     _assertIsChat();
 
     id ??= eventMemberId;
@@ -316,7 +346,7 @@ class MessageContext extends Context {
   /// Excludes user from chat
   ///
   /// `id` *(integer)* User or group ID.
-  Future<dynamic> kickUser([int id]) {
+  Future<dynamic> kickUser([int? id]) {
     _assertIsChat();
 
     id ??= eventMemberId;

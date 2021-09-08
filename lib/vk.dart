@@ -1,7 +1,6 @@
 import 'models/api.dart';
 import 'models/authorization.dart';
 import 'models/updates.dart';
-
 import 'types.dart';
 
 class VK {
@@ -16,13 +15,13 @@ class VK {
     'it',
   ];
 
-  Map<String, dynamic> options;
-  API api;
-  Authorization authorization;
-  Updates updates;
+  late Map<String, dynamic> options;
+  late API api;
+  late Authorization authorization;
+  late Updates updates;
 
   VK({
-    String token,
+    required String token,
     String version = '5.103',
     LanguageType language = LanguageType.EN,
     Duration pollingWait = const Duration(seconds: 1),
