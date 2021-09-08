@@ -230,7 +230,7 @@ class API {
     Map body = <String, dynamic>{
       'access_token': _vk.options['token'],
       'v': _vk.options['version'],
-      ...?params,
+      ...params,
     };
 
     var response = await http.post(

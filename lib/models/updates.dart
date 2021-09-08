@@ -129,7 +129,7 @@ class Updates {
       throw 'Polling is already started';
     }
 
-    int pollingGroupId = _vk.options['pollingGroupId'];
+    int? pollingGroupId = _vk.options['pollingGroupId'];
     var isGroup = pollingGroupId != null;
 
     isStarted = true;
