@@ -5,7 +5,7 @@ author: nitrojs <n1trojscoding@gmail.com>
 homepage: https://github.com/nitreojs/dart-vkio
 issue_tracker: https://github.com/nitreojs/dart-vkio/issues
 dependencies:
-  http: ^0.13.3
+  http: ^1.0.0
   html: ^0.15.0
   # dio: ^3.0.8
 environment:
